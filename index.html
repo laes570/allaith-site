@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الــلــيث | إبداع رقمي بواجهة عربية</title>
+  <meta name="description" content="فريق الليث: نصمم ونبدع واجهات مستخدم مذهلة وتجارب رقمية أنيقة تليق بالذوق العربي.">
+  <!-- Favicon - يمكنك إضافة أيقونة لموقعك هنا -->
+  <!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <style>
+    /* Base styles */
+    body {
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body.dark {
+      background-color: #0f172a; /* slate-900 */
+      color: #e2e8f0; /* slate-200 */
+    }
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    /* Custom scrollbar for webkit browsers */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    body.dark ::-webkit-scrollbar-track {
+      background: #1e293b; /* slate-800 */
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+    }
+    body.dark ::-webkit-scrollbar-thumb {
+      background: #475569; /* slate-600 */
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+    body.dark ::-webkit-scrollbar-thumb:hover {
+      background: #64748b; /* slate-500 */
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50 text-gray-900">
+  <div id="particles-js"></div>
+
+  <!-- Dark Mode Toggle Button -->
+  <button
+    id="theme-toggle"
+    type="button"
+    aria-label="تبديل الوضع الداكن/الفاتح"
+    class="fixed top-4 right-4 z-50 p-2.5 text-sm text-gray-500 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+  >
+    <!-- Moon icon -->
+    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+    <!-- Sun icon -->
+    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 6.464l.707.707a1 1 0 001.414-1.414l-.707-.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+    <span id="theme-toggle-text" class="sr-only">تبديل الوضع</span>
+  </button>
+
+  <main class="flex-grow">
+    <header class="text-center py-16 md:py-24 bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm">
+      <div class="container mx-auto px-4">
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-800 dark:text-white mb-3">الــلــيث</h1>
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300">
+          <span id="typed"></span>
+        </p>
+      </div>
+    </header>
+
+    <section class="py-12 md:py-16">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-semibold mb-6 text-gray-800 dark:text-white">من نحن؟</h2>
+        <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          نحن فريق الليث، فريق شغوف متخصص في تصميم وتطوير واجهات المستخدم الإبداعية وتجارب رقمية فريدة.
+          نسعى جاهدين لتقديم حلول تليق بالذوق العربي الرفيع، مع التركيز على الأناقة، سهولة الاستخدام، وأحدث التقنيات.
+          نؤمن بأن التصميم الجيد هو جسر يربط بين الأفكار وتحقيقها.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12 md:py-16 bg-gray-100 dark:bg-slate-800">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-semibold mb-6 text-gray-800 dark:text-white">خدماتنا</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 bg-white dark:bg-slate-700 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-2 text-blue-600 dark:text-blue-400">تصميم الواجهات (UI)</h3>
+                    <p class="text-gray-600 dark:text-gray-300">نصمم واجهات مستخدم جذابة وسهلة الاستخدام تعكس هوية علامتك التجارية.</p>
+                </div>
+                <div class="p-6 bg-white dark:bg-slate-700 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-2 text-green-600 dark:text-green-400">تجربة المستخدم (UX)</h3>
+                    <p class="text-gray-600 dark:text-gray-300">نركز على إنشاء تجارب مستخدم سلسة وممتعة تحقق أهدافك وأهداف جمهورك.</p>
+                </div>
+                <div class="p-6 bg-white dark:bg-slate-700 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-2 text-purple-600 dark:text-purple-400">تطوير الويب</h3>
+                    <p class="text-gray-600 dark:text-gray-300">نحول التصاميم إلى واقع ملموس باستخدام أحدث تقنيات تطوير الويب.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-8 text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700">
+    <div class="container mx-auto px-4">
+      © <span id="currentYear"></span> الــلــيث. جميع الحقوق محفوظة.
+      <p class="text-sm mt-1">تصميم وتطوير بحب <span class="text-red-500">❤</span> فريق الليث</p>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Particles.js
+    particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.json', function() {
+      console.log('Particles.js loaded');
+    });
+
+    // Typed.js
+    var typed = new Typed('#typed', {
+      strings: [
+        'مرحبًا بك في موقع الليث',
+        'نحن نصنع الإبداع الرقمي.',
+        'واجهات مذهلة، تصميم أنيق.',
+        'تجربة مستخدم لا تُنسى.',
+        'حلول ويب تليق بطموحاتك.'
+      ],
+      typeSpeed: 60,
+      backSpeed: 30,
+      backDelay: 1500,
+      startDelay: 500,
+      loop: true,
+      smartBackspace: true
+    });
+
+    // Dark Mode Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.body.classList.add('dark');
+        themeToggleLightIcon.classList.remove('hidden');
+        themeToggleDarkIcon.classList.add('hidden');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.body.classList.remove('dark');
+        themeToggleLightIcon.classList.add('hidden');
+        themeToggleDarkIcon.classList.remove('hidden');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    let isDarkMode;
+    if (localStorage.getItem('theme')) {
+      isDarkMode = localStorage.getItem('theme') === 'dark';
+    } else {
+      isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    applyTheme(isDarkMode);
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (!localStorage.getItem('theme')) { 
+            applyTheme(event.matches);
+        }
+    });
+
+    themeToggleBtn.addEventListener('click', function() {
+      applyTheme(!document.body.classList.contains('dark'));
+    });
+  </script>
+</body>
+</html>
