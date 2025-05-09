@@ -3,183 +3,238 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>الــلــيث | إبداع رقمي بواجهة عربية</title>
-  <meta name="description" content="فريق الليث: نصمم ونبدع واجهات مستخدم مذهلة وتجارب رقمية أنيقة تليق بالذوق العربي.">
-  <!-- Favicon - يمكنك إضافة أيقونة لموقعك هنا -->
-  <!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
+  <title>الــلــيث | خدمات رقمية متكاملة</title>
+  <meta name="description" content="موقع الليث لخدمات شحن جميع الألعاب والبرامج، تعبئة رصيد سيريتل و MTN جملة ومفرق، كازيات، رصيد كاش، سحب وتعبئة شام كاش، بنك بيمو والبركة، تحويل فؤاد وهرم.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* Base styles */
     body {
-      transition: background-color 0.5s ease, color 0.5s ease;
+      font-family: 'Cairo', sans-serif;
+      transition: background-color 0.3s, color 0.3s;
     }
     body.dark {
-      background-color: #0f172a; /* slate-900 */
-      color: #e2e8f0; /* slate-200 */
+      background-color: #1a202c;
+      color: #e2e8f0;
     }
-    #particles-js {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+    .service-card {
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
-    /* Custom scrollbar for webkit browsers */
-    ::-webkit-scrollbar {
-      width: 8px;
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-    body.dark ::-webkit-scrollbar-track {
-      background: #1e293b; /* slate-800 */
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 4px;
-    }
-    body.dark ::-webkit-scrollbar-thumb {
-      background: #475569; /* slate-600 */
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
-    body.dark ::-webkit-scrollbar-thumb:hover {
-      background: #64748b; /* slate-500 */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50 text-gray-900">
-  <div id="particles-js"></div>
+<body class="bg-gray-100 text-gray-800" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" :class="{ 'dark': darkMode }">
 
-  <!-- Dark Mode Toggle Button -->
-  <button
-    id="theme-toggle"
-    type="button"
-    aria-label="تبديل الوضع الداكن/الفاتح"
-    class="fixed top-4 right-4 z-50 p-2.5 text-sm text-gray-500 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-  >
-    <!-- Moon icon -->
-    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-    <!-- Sun icon -->
-    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 6.464l.707.707a1 1 0 001.414-1.414l-.707-.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-    <span id="theme-toggle-text" class="sr-only">تبديل الوضع</span>
-  </button>
-
-  <main class="flex-grow">
-    <header class="text-center py-16 md:py-24 bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm">
-      <div class="container mx-auto px-4">
-        <h1 class="text-5xl md:text-6xl font-bold text-gray-800 dark:text-white mb-3">الــلــيث</h1>
-        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300">
-          <span id="typed"></span>
-        </p>
+  <!-- Navbar -->
+  <nav class="bg-white dark:bg-gray-800 shadow-md fixed w-full z-20 top-0" x-data="{ open: false }">
+    <div class="container mx-auto px-6 py-3">
+      <div class="flex items-center justify-between">
+        <div class="text-2xl font-bold text-gray-800 dark:text-white">
+          <a href="#">الــلــيث</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-reverse space-x-4">
+          <a href="#hero" class="text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400">الرئيسية</a>
+          <a href="#services" class="text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400">خدماتنا</a>
+          <a href="#how-to-order" class="text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400">كيف تطلب؟</a>
+          <a href="#contact" class="text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400">اتصل بنا</a>
+          <button @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" class="p-2 rounded-md focus:outline-none">
+            <i x-show="!darkMode" class="fas fa-moon text-xl text-gray-700"></i>
+            <i x-show="darkMode" class="fas fa-sun text-xl text-yellow-400"></i>
+          </button>
+        </div>
+        <div class="md:hidden flex items-center">
+            <button @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" class="p-2 rounded-md focus:outline-none mr-2">
+                <i x-show="!darkMode" class="fas fa-moon text-xl text-gray-700"></i>
+                <i x-show="darkMode" class="fas fa-sun text-xl text-yellow-400"></i>
+            </button>
+            <button @click="open = !open" class="text-gray-800 dark:text-gray-200 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path :class="{'hidden': open, 'inline-flex': !open }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path :class="{'hidden': !open, 'inline-flex': open }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
       </div>
-    </header>
-
-    <section class="py-12 md:py-16">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-semibold mb-6 text-gray-800 dark:text-white">من نحن؟</h2>
-        <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-          نحن فريق الليث، فريق شغوف متخصص في تصميم وتطوير واجهات المستخدم الإبداعية وتجارب رقمية فريدة.
-          نسعى جاهدين لتقديم حلول تليق بالذوق العربي الرفيع، مع التركيز على الأناقة، سهولة الاستخدام، وأحدث التقنيات.
-          نؤمن بأن التصميم الجيد هو جسر يربط بين الأفكار وتحقيقها.
-        </p>
+      <div :class="{'block': open, 'hidden': !open}" class="md:hidden mt-3">
+        <a href="#hero" @click="open = false" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">الرئيسية</a>
+        <a href="#services" @click="open = false" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">خدماتنا</a>
+        <a href="#how-to-order" @click="open = false" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">كيف تطلب؟</a>
+        <a href="#contact" @click="open = false" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">اتصل بنا</a>
       </div>
-    </section>
+    </div>
+  </nav>
 
-    <section class="py-12 md:py-16 bg-gray-100 dark:bg-slate-800">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-semibold mb-6 text-gray-800 dark:text-white">خدماتنا</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-6 bg-white dark:bg-slate-700 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold mb-2 text-blue-600 dark:text-blue-400">تصميم الواجهات (UI)</h3>
-                    <p class="text-gray-600 dark:text-gray-300">نصمم واجهات مستخدم جذابة وسهلة الاستخدام تعكس هوية علامتك التجارية.</p>
+  <section id="hero" class="bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-700 dark:to-indigo-800 text-white pt-32 pb-16 md:pt-40 md:pb-24 text-center">
+    <div class="container mx-auto px-6">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">الــلــيث للخدمات الرقمية</h1>
+      <p class="text-xl md:text-2xl mb-8">جميع احتياجاتك الرقمية في مكان واحد: شحن ألعاب، رصيد، كاش، فواتير، وتحويلات مالية.</p>
+      <a href="#services" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-full text-lg transition duration-300">
+        اكتشف خدماتنا <i class="fas fa-arrow-down ml-2"></i>
+      </a>
+    </div>
+  </section>
+
+  <section id="services" class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">خدماتنا الشاملة</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="service-card bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center">
+          <i class="fas fa-gamepad text-4xl text-blue-500 dark:text-blue-400 mb-4"></i>
+          <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">شحن جميع الألعاب والبرامج</h3>
+          <p class="text-gray-600 dark:text-gray-300">نوفر شحنًا لجميع ألعابك وبرامجك المفضلة بأفضل الأسعار وسرعة في التنفيذ.</p>
+        </div>
+        <div class="service-card bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center">
+          <i class="fas fa-sim-card text-4xl text-red-500 dark:text-red-400 mb-4"></i>
+          <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">رصيد Syriatel و MTN</h3>
+          <p class="text-gray-600 dark:text-gray-300">تعبئة رصيد جملة ومفرق، بالإضافة إلى خدمة الكازيات لشبكتي سيريتل و MTN.</p>
+        </div>
+        <div class="service-card bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center">
+          <i class="fas fa-wallet text-4xl text-green-500 dark:text-green-400 mb-4"></i>
+          <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">خدمات الكاش والشام كاش</h3>
+          <p class="text-gray-600 dark:text-gray-300">تعبئة رصيد كاش، وسحب وتعبئة الرصيد عبر خدمة شام كاش.</p>
+        </div>
+        <div class="service-card bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center">
+          <i class="fas fa-university text-4xl text-purple-500 dark:text-purple-400 mb-4"></i>
+          <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">خدمات بنكية وتحويلات</h3>
+          <p class="text-gray-600 dark:text-gray-300">سحب من بنك بيمو وبنك البركة. خدمات تحويل الأموال عبر فؤاد والهرم.</p>
+        </div>
+        <div class="service-card bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center">
+          <i class="fas fa-file-invoice-dollar text-4xl text-yellow-500 dark:text-yellow-400 mb-4"></i>
+          <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">تسديد الفواتير</h3>
+          <p class="text-gray-600 dark:text-gray-300">سدد فواتيرك المختلفة (كهرباء، ماء، إنترنت، هاتف أرضي) بكل سهولة وسرعة.</p>
+        </div>
+        <div class="service-card bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center">
+          <i class="fas fa-cogs text-4xl text-teal-500 dark:text-teal-400 mb-4"></i>
+          <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">جميع العمليات الرقمية</h3>
+          <p class="text-gray-600 dark:text-gray-300">نقدم مجموعة واسعة من الخدمات والعمليات الرقمية لتلبية كافة احتياجاتك.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-to-order" class="py-16 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">كيف تطلب الخدمة؟</h2>
+      <div class="max-w-2xl mx-auto">
+        <ol class="space-y-6">
+          <li class="flex items-start">
+            <div class="bg-blue-500 dark:bg-blue-400 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold mr-4 shrink-0">1</div>
+            <p class="text-gray-700 dark:text-gray-300">اختر الخدمة المطلوبة من قائمة خدماتنا المتنوعة (شحن ألعاب، رصيد، كاش، فواتير، تحويلات).</p>
+          </li>
+          <li class="flex items-start">
+            <div class="bg-blue-500 dark:bg-blue-400 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold mr-4 shrink-0">2</div>
+            <p class="text-gray-700 dark:text-gray-300">تواصل معنا عبر واتساب على الرقم: <strong class="text-lg text-green-600 dark:text-green-400">0934002559</strong> أو عبر التلغرام: <strong class="text-lg text-blue-600 dark:text-blue-400">@Youssef_alSuleiman</strong>. زودنا بتفاصيل طلبك (مثل اسم اللعبة و ID اللاعب، رقم الهاتف للتعبئة، معلومات الفاتورة، إلخ).</p>
+          </li>
+          <li class="flex items-start">
+            <div class="bg-blue-500 dark:bg-blue-400 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold mr-4 shrink-0">3</div>
+            <p class="text-gray-700 dark:text-gray-300">سيتم تزويدك بتكلفة الخدمة وطرق الدفع المتاحة (سيريتل كاش، MTN كاش، شام كاش، حوالات الهرم أو الفؤاد، أو طرق أخرى متفق عليها).</p>
+          </li>
+          <li class="flex items-start">
+            <div class="bg-blue-500 dark:bg-blue-400 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold mr-4 shrink-0">4</div>
+            <p class="text-gray-700 dark:text-gray-300">بعد تأكيد الدفع، نقوم بتنفيذ طلبك على الفور وبأسرع وقت ممكن.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="why-us" class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">لماذا تختار الــلــيث؟</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div>
+                    <i class="fas fa-shipping-fast text-4xl text-blue-500 dark:text-blue-400 mb-3"></i>
+                    <h4 class="text-xl font-semibold mb-1 text-gray-800 dark:text-white">سرعة وموثوقية</h4>
+                    <p class="text-gray-600 dark:text-gray-300">تنفيذ فوري لطلباتك مع ضمان الخدمة.</p>
                 </div>
-                <div class="p-6 bg-white dark:bg-slate-700 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold mb-2 text-green-600 dark:text-green-400">تجربة المستخدم (UX)</h3>
-                    <p class="text-gray-600 dark:text-gray-300">نركز على إنشاء تجارب مستخدم سلسة وممتعة تحقق أهدافك وأهداف جمهورك.</p>
+                <div>
+                    <i class="fas fa-dollar-sign text-4xl text-green-500 dark:text-green-400 mb-3"></i>
+                    <h4 class="text-xl font-semibold mb-1 text-gray-800 dark:text-white">أسعار تنافسية</h4>
+                    <p class="text-gray-600 dark:text-gray-300">أفضل الأسعار لجميع الخدمات الرقمية.</p>
                 </div>
-                <div class="p-6 bg-white dark:bg-slate-700 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold mb-2 text-purple-600 dark:text-purple-400">تطوير الويب</h3>
-                    <p class="text-gray-600 dark:text-gray-300">نحول التصاميم إلى واقع ملموس باستخدام أحدث تقنيات تطوير الويب.</p>
+                <div>
+                    <i class="fas fa-shield-alt text-4xl text-red-500 dark:text-red-400 mb-3"></i>
+                    <h4 class="text-xl font-semibold mb-1 text-gray-800 dark:text-white">أمان تام</h4>
+                    <p class="text-gray-600 dark:text-gray-300">معاملاتك وبياناتك في أمان دائم معنا.</p>
+                </div>
+                <div>
+                    <i class="fas fa-headset text-4xl text-purple-500 dark:text-purple-400 mb-3"></i>
+                    <h4 class="text-xl font-semibold mb-1 text-gray-800 dark:text-white">دعم فني متواصل</h4>
+                    <p class="text-gray-600 dark:text-gray-300">مستعدون لمساعدتك والإجابة على جميع استفساراتك.</p>
                 </div>
             </div>
         </div>
     </section>
-  </main>
 
-  <footer class="text-center py-8 text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700">
-    <div class="container mx-auto px-4">
-      © <span id="currentYear"></span> الــلــيث. جميع الحقوق محفوظة.
-      <p class="text-sm mt-1">تصميم وتطوير بحب <span class="text-red-500">❤</span> فريق الليث</p>
+  <section id="contact" class="py-16 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-8 text-gray-800 dark:text-white">اطلب خدمتك الآن!</h2>
+      <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-xl mx-auto">
+        فريق الليث في خدمتك. تواصل معنا عبر واتساب أو تلغرام لتلبية جميع احتياجاتك الرقمية.
+      </p>
+      <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-reverse md:space-x-6">
+        <a href="https://wa.me/963934002559" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 flex items-center shadow-md">
+          <i class="fab fa-whatsapp text-2xl mr-3 ml-1"></i>
+          واتساب: 0934002559
+        </a>
+        <a href="https://t.me/Youssef_alSuleiman" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 flex items-center shadow-md">
+          <i class="fab fa-telegram-plane text-2xl mr-3 ml-1"></i>
+          تلغرام: @Youssef_alSuleiman
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-800 dark:bg-black text-gray-300 dark:text-gray-400 text-center py-8">
+    <div class="container mx-auto px-6">
+      <p>© <span id="currentYear"></span> الــلــيث للخدمات الرقمية. جميع الحقوق محفوظة.</p>
+      <p class="text-sm">وجهتك الأولى لجميع معاملاتك الرقمية في سوريا.</p>
     </div>
   </footer>
 
   <script>
-    // Set current year in footer
+    document.addEventListener('alpine:init', () => {
+      Alpine.store('darkMode', {
+        on: localStorage.getItem('darkMode') === 'true',
+        toggle() {
+          this.on = !this.on;
+          localStorage.setItem('darkMode', this.on);
+          document.body.classList.toggle('dark', this.on);
+        }
+      });
+      if (Alpine.store('darkMode').on) {
+          document.body.classList.add('dark');
+      }
+    });
+
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    // Particles.js
-    particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.json', function() {
-      console.log('Particles.js loaded');
-    });
-
-    // Typed.js
-    var typed = new Typed('#typed', {
-      strings: [
-        'مرحبًا بك في موقع الليث',
-        'نحن نصنع الإبداع الرقمي.',
-        'واجهات مذهلة، تصميم أنيق.',
-        'تجربة مستخدم لا تُنسى.',
-        'حلول ويب تليق بطموحاتك.'
-      ],
-      typeSpeed: 60,
-      backSpeed: 30,
-      backDelay: 1500,
-      startDelay: 500,
-      loop: true,
-      smartBackspace: true
-    });
-
-    // Dark Mode Toggle
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-
-    function applyTheme(isDark) {
-      if (isDark) {
-        document.body.classList.add('dark');
-        themeToggleLightIcon.classList.remove('hidden');
-        themeToggleDarkIcon.classList.add('hidden');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.body.classList.remove('dark');
-        themeToggleLightIcon.classList.add('hidden');
-        themeToggleDarkIcon.classList.remove('hidden');
-        localStorage.setItem('theme', 'light');
-      }
-    }
-
-    let isDarkMode;
-    if (localStorage.getItem('theme')) {
-      isDarkMode = localStorage.getItem('theme') === 'dark';
-    } else {
-      isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    applyTheme(isDarkMode);
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-        if (!localStorage.getItem('theme')) { 
-            applyTheme(event.matches);
-        }
-    });
-
-    themeToggleBtn.addEventListener('click', function() {
-      applyTheme(!document.body.classList.contains('dark'));
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const navElement = document.querySelector('nav');
+                const navHeight = navElement ? navElement.offsetHeight : 0;
+                const offsetTop = targetElement.offsetTop - navHeight;
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
   </script>
 </body>
-</html>
+</html>	
